@@ -82,6 +82,7 @@
         .list-group-item {
             padding: 0.25rem 0.5rem; /* Reduce padding */
         }
+
         .btn1 {
             padding: 15px; /* Reduce padding */
             margin-top: 10px;
@@ -104,13 +105,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto"> <!-- Align search bar to the left -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" style="color: cornsilk">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" style="color: cornsilk">About</a>
+                <a class="nav-link" href="#" style="color: cornsilk">Add Post <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" style="color: cornsilk">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color: cornsilk">Sign in</a>
             </li>
         </ul>
         <!-- Add search bar -->
@@ -133,28 +134,30 @@
     <!-- Changed from container to container-fluid -->
     <div class="row">
 
-
         <!-- Container for posts -->
         {% for post in posts %}
         <div class="card mb-3" style="width: 1170px;padding:16px">
             <div class="d-flex flex-row">
                 <div class="flex-grow-1"> <!-- Content on the right -->
                     <div class="card-body">
-                        <h5 class="card-title"><a href="{{ post.url }}" style="color: black">{{ post.title }}</a></h5>
+                        <h5 class="card-title"><a href="{% url 'details' post.slug %}" style="color: black">
+                            {{ post.title }}</a>
+
+                        </h5>
                         <p class="card-text">{{ post.body | truncatewords_html:20 }}</p>
-                        <p class="card-text"><small class="text-muted">By: {{ post.author }} | Published: {{
-                            post.created }}</small></p>
+                        <p class="card-text"><small class="text-muted">By: {{ post.author }} | Published:
+                            {{ post.created }}</small></p>
                         <p class="card-text">Categories:
                             {% for category in post.categories.all %}
                             <span class="badge badge-primary">{{ category.name }}</span>
                             {% endfor %}
                         </p>
-                         <a href="{{ post.url }}" class="btn1 btn btn-info btn-sm">Read More</a>
+                        <a href="{% url 'details' post.slug %}" class="btn1 btn btn-info btn-sm">Read More</a>
                     </div>
                 </div>
                 <div class="flex-shrink-0 ml-3"> <!-- Image on the left -->
-                    <a href="{{ post.url }}"><img src="{{ post.image.url }}" class="card-img-top"
-                         style="width: 400px;height: 230px;padding: 15px" alt="Post Image"></a>
+                    <a href="{% url 'details' post.slug %}"><img src="{{ post.image.url }}" class="card-img-top"
+                                                  style="width: 400px;height: 230px;padding: 15px" alt="Post Image"></a>
                 </div>
 
             </div>
