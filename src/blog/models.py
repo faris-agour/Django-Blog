@@ -10,7 +10,7 @@ Status = (
 
 def img_upload(instance, filename):
     imgname, ext = filename.split('.')
-    return f'jobs/{instance.id}.{ext}'
+    return f'images/{instance.id}.{ext}'
 
 
 class Category(models.Model):
