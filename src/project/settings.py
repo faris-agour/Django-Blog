@@ -32,6 +32,11 @@ DATABASE_USER = os.getenv('DATABASE_USER')
 DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
 DATABASE_HOST = os.getenv('DATABASE_HOST')
 DATABASE_PORT = os.getenv('DATABASE_PORT')
+HOST_EMAIL = os.getenv('EMAIL_HOST')
+EMAIL_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+PORT_EMAIL = os.getenv('EMAIL_PORT')
+EMAIL_TLS = os.getenv('EMAIL_USE_TLS')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,8 +52,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'bootstrap4',
+    'taggit',
     "blog",
-    "theme_material_kit",
+    "contact"
+
 ]
 
 MIDDLEWARE = [
@@ -90,7 +98,7 @@ DATABASES = {
         'NAME': DATABASE_NAME,
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
-        'HOST':DATABASE_HOST ,  # Or your MySQL host
+        'HOST': DATABASE_HOST,  # Or your MySQL host
         'PORT': DATABASE_PORT,  # Or your MySQL port
     }
 }
@@ -140,3 +148,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../static/')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = HOST_EMAIL
+EMAIL_HOST_USER = EMAIL_USER
+EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+EMAIL_PORT = PORT_EMAIL
+EMAIL_USE_TLS = EMAIL_TLS

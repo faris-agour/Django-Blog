@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+Contact
+{% endblock %}
+{%block content%}
+
+<div style="background-color: darkgray; margin-bottom:14px">
+    <div>
+        <h1 style="text-align: center;padding-top: 47px;padding-bottom: 1px"> Contact Us</h1>
+        <p style="margin-bottom:70px;padding-bottom: 32px;text-align: center">If you facing a problem or issue you can
+            touch
+            with us .</p>
+    </div>
+</div>
+
+<div class="container contact-container" style="margin-bottom: 22px">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="contact-form">
+                <h3 style="margin-bottom: 32px;color: grey; text-align: center">Send an E-mail</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <button class="btn btn-dark mt-3 " style="width: 200px; border-radius: 11px" type="submit">Send
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 fixed-end">
+            <div style="margin-left: 30%; border: darkcyan 6px solid;padding:12px;border-radius: 6px" class="hide-on-small">
+                <div class="contact-info">
+                    <h5 style="margin-bottom: 22px;text-align: center">Contact Information</h5>
+                    <p><strong>Email:</strong> faresabouagour@gmail.com</p>
+                    <p><strong>Phone:</strong> +20 109 625 7535</p>
+                </div>
+                <!-- Add your social icons here -->
+                <div class="social-icons">
+                    <a href="#" class="social-icon"> <i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+
+</body>
+</html>
