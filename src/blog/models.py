@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from taggit.managers import TaggableManager
 
 # Create your models here.
 Status = (
@@ -30,6 +31,7 @@ class Post(models.Model):
     status = models.CharField(max_length=2, choices=Status)
     image = models.ImageField(upload_to=img_upload, blank=True, null=True)
     categories = models.ManyToManyField(Category)
+    tags = TaggableManager()
 
     def __str__(self):
         return self.title
