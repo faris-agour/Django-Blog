@@ -1,127 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Django Blog</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{% extends 'base.html' %}
 
-    <style>
-        .navbar .form-inline {
-            margin-right: 10px;
-        }
+{% block title %}
+My Django Blog - Index
+{% endblock %}
 
-        /* Adjust padding of navbar to accommodate search bar */
-        .navbar {
-            padding-right: 20px;
-            padding-left: 20px;
-        }
-
-        body {
-            padding-top: 56px; /* Adjust this value based on the height of your navigation bar */
-        }
-
-        /* Header styling */
-        .navbar-brand {
-            font-size: 24px;
-            color: #333;
-        }
-
-        .navbar {
-            background-color: #f8f9fa; /* Light gray background */
-        }
-
-        /* Reduce post size */
-        .card-title {
-            font-size: 17px; /* Decrease title font size */
-            margin-bottom: 10px; /* Add margin bottom for separation */
-        }
-
-        .card-text {
-            font-size: 13px; /* Decrease body text font size */
-        }
-
-        .card {
-            margin-bottom: 20px; /* Increase margin between posts */
-            display: flex; /* Make cards flex containers */
-        }
-
-        .card-img-top {
-            width: 355px; /* Set width for the image */ /* Set width for the image */
-
-            object-fit: cover; /* Cover the image within its container */
-            /*flex: 0 0 auto; !* Make the image non-flexible *!*/
-        }
-
-        .card-body {
-            flex: 5; /* Make the body flexible to occupy remaining space */
-            padding: 1rem; /* Add padding to the body */
-        }
-
-        .post-image {
-            width: 80%; /* Set width for the image */
-            flex: auto; /* Make the image non-flexible */
-        }
-
-        .card-body {
-            flex: fit-content; /* Make the body flexible to occupy remaining space */
-            padding: 8px; /* Add padding to the body */
-            align-items: flex-start; /* Align items to the start of the flex container */
-        }
-
-        .col-md-3 {
-            width: 25%; /* Adjust the width as needed */
-        }
-
-        .list-group {
-            margin-bottom: 0; /* Remove bottom margin */
-        }
-
-        .list-group-item {
-            padding: 0.25rem 0.5rem; /* Reduce padding */
-        }
-
-        .btn1 {
-            padding: 15px; /* Reduce padding */
-            margin-top: 10px;
-            border-radius: 11px;
-            width: 300px;
-        }
-
-
-    </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #333; ">
-    <!-- Add "fixed-top" class -->
-    <a class="navbar-brand" href="#" style="color: darkgray">My Blog</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto"> <!-- Align search bar to the left -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" style="color: cornsilk">Add Post <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" style="color: cornsilk">Contact</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" style="color: cornsilk">Sign in</a>
-            </li>
-        </ul>
-        <!-- Add search bar -->
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
-
+{% block content %}
 <div style="background-color: darkgray; margin-bottom:14px">
     <div>
         <h1 style="text-align: center;padding-top: 47px;padding-bottom: 1px">Welcome to BlogIT</h1>
@@ -165,13 +48,10 @@
         </div>
 
         {% endfor %}
-
-
     </div>
-
 </div>
 
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example"style="margin-bottom: 42px">
     <ul class="pagination justify-content-center">
         {% if posts.has_previous %}
             <li class="page-item">
@@ -218,30 +98,4 @@
         {% endif %}
     </ul>
 </nav>
-
-<footer class="footer mt-auto py-4" style="background-color: #333; color: #fff; font-family: 'Arial', sans-serif;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6" style="padding-top: 18px">
-                <h5 style="margin-bottom: 12px; color: chocolate">Contact Information</h5>
-                <p style="font-size: 16px; margin-top :20px;margin-bottom: 10px ">Email: faresabouagour@gmail.com</p>
-                <p style="font-size: 16px;">Phone: +20 109 625 7535</p>
-            </div>
-            <div class="col-md-6" style="padding-top: 18px">
-                <h5 style="margin-bottom: 12px;color: chocolate">Follow Us</h5>
-                <!-- Add your social icons here -->
-                <a href="#" class="social-icon" style="margin-right: 8px"> <i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon" style="margin-right: 8px"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon" style="margin-right: 8px"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon" style="margin-right: 8px"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Bootstrap JS and jQuery (optional, if you need any Bootstrap features that require JS) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock %}
