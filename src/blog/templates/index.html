@@ -32,7 +32,7 @@ My Django Blog - Index
                             {{ post.created }}</small></p>
                         <p class="card-text">Tags:
                             {% for tag in post.tags.all %}
-                            <span class="badge badge-primary">{{ tag|join:"," }}</span>
+                            <span class="badge badge-primary">{{ tag|join:","}}</span>
                             {% endfor %}
                         </p>
                         <a href="{% url 'blog:details' post.slug %}" class="btn1 btn btn-info btn-sm">Read More</a>
