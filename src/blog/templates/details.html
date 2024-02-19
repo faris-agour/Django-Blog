@@ -26,13 +26,14 @@ Post - details
                                                       style="width: 600px;height: 320px;padding: 15px" alt="Post Image"></a>
                     </div>
                     <p class="card-text" style="font-size:122% ">{{ post.body }}</p>
-                    <p class="card-text">Categories:
-                        {% for category in post.categories.all %}
-                        <span class="badge badge-primary">{{ category.name }}</span>
+                    <p class="card-text">Tags:
+                        {% for tag in post.tags.all %}
+                        <span class="badge badge-primary" style="font-size: 100%">{{ tag|join:","}}</span>
                         {% endfor %}
                     </p>
                 </div>
             </div>
+<!--            similar posts by tag-->
             <!-- Add comment section -->
             <div class="card mt-4" style="background-color: ghostwhite; margin-bottom: 32px">
                 <div class="card-body">
