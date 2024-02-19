@@ -1,8 +1,9 @@
-from django.contrib import admin
 from django.urls import path
+
 from . import views
 
+app_name = 'blog'  # {% url 'blog:index'%} used for this
 urlpatterns = [
-    path("",views.blog_list, name='index'),
+    path("", views.blog_list, name='index'),
     path('post/<slug:slug>/', views.post_details, name='details'),
 ]

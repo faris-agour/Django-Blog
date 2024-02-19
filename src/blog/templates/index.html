@@ -23,7 +23,7 @@ My Django Blog - Index
             <div class="d-flex flex-row">
                 <div class="flex-grow-1"> <!-- Content on the right -->
                     <div class="card-body">
-                        <h5 class="card-title"><a href="{% url 'details' post.slug %}" style="color: black">
+                        <h5 class="card-title"><a href="{% url 'blog:details' post.slug %}" style="color: black">
                             {{ post.title }}</a>
 
                         </h5>
@@ -35,11 +35,11 @@ My Django Blog - Index
                             <span class="badge badge-primary">{{ category.name }}</span>
                             {% endfor %}
                         </p>
-                        <a href="{% url 'details' post.slug %}" class="btn1 btn btn-info btn-sm">Read More</a>
+                        <a href="{% url 'blog:details' post.slug %}" class="btn1 btn btn-info btn-sm">Read More</a>
                     </div>
                 </div>
                 <div class="flex-shrink-0 ml-3"> <!-- Image on the left -->
-                    <a href="{% url 'details' post.slug %}"><img src="{{ post.image.url }}" class="card-img-top"
+                    <a href="{% url 'blog:details' post.slug %}"><img src="{{ post.image.url }}" class="card-img-top"
                                                                  style="width: 400px;height: 230px;padding: 15px"
                                                                  alt="Post Image"></a>
                 </div>
