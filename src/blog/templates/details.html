@@ -33,7 +33,34 @@ Post - details
                     </p>
                 </div>
             </div>
-<!--            similar posts by tag-->
+            <!--similar posts by tag-->
+            <div class="card mt-4" style="background-color: ghostwhite; margin-bottom: 32px">
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 18px">Similar Posts</h5>
+                    {% for similar_post in similar_posts %}
+                    <div class="media">
+                        <a href="{% url 'blog:details' similar_post.slug %}"><img src="{{ similar_post.image.url }}"
+                                                                                  class="mr-3" alt="Post Image"
+                                                                                  style="width: 100px;">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="mt-0"><a href="{% url 'blog:details' similar_post.slug %}">
+                                {{ similar_post.title }}</a></h5>
+                            <p>{{ similar_post.body | truncatewords:20 }}</p>
+                            <p><small>By: {{ similar_post.author }} | Published: {{ similar_post.created }}</small></p>
+                            <p class="card-text">Tags:
+                                {% for tag in similar_post.tags.all %}
+                                <span class="badge badge-primary">{{ tag|join:","}}</span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    <p>_______________________________________________________________________________________________________________________________________
+                    </p>
+                    {% endfor %}
+                </div>
+            </div>
+
             <!-- Add comment section -->
             <div class="card mt-4" style="background-color: ghostwhite; margin-bottom: 32px">
                 <div class="card-body">
