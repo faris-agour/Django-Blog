@@ -22,7 +22,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status)
-    image = models.ImageField(upload_to=img_upload, blank=True, null=True)
+    image = models.ImageField(upload_to=img_upload)
     tags = TaggableManager()
 
     def __str__(self):
