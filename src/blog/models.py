@@ -3,10 +3,6 @@ from django.db import models
 from taggit.managers import TaggableManager
 
 # Create your models here.
-Status = (
-    ("DF", "Draft"),
-    ("CR", "Created"),
-)
 
 
 def img_upload(instance, filename):
@@ -21,7 +17,11 @@ class Post(models.Model):
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=2, choices=Status)
+    STATUS_CHOICES = (
+        ('DR', 'Draft'),
+        ('CR', 'Created'),
+    )
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='DF')
     image = models.ImageField(upload_to=img_upload)
     tags = TaggableManager()
 
