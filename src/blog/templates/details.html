@@ -8,7 +8,8 @@ Post - details
 
 <div style="background-color: darkgray; margin-bottom:14px">
     <div>
-        <h1 style="text-align: center;padding-top: 87px;padding-bottom: 50px">{{ post.title }}</h1>
+        <h1 style="text-align: center;padding-top: 87px;padding-bottom: 50px;padding-left: 20px;padding-right: 20px">
+            {{ post.title }}</h1>
     </div>
 </div>
 
@@ -21,12 +22,14 @@ Post - details
                     <p class="card-text"><small class="text-muted">By: {{ post.author }} | Published:
                         {{ post.created }}</small></p>
                     <!-- Full post details here -->
-                    <div class="flex-shrink-0 ml-3 " style="padding-bottom: 16px;"> <!-- Image on the left -->
-                        <a href="{{ post.url }}"><img src="{{ post.image.url }}" class="card-img-top"
-                                                      style="width: 600px;height: 320px;padding: 15px" alt="Post Image"></a>
+                    <div class="flex-shrink-0 ml-auto mr-auto" style="padding-bottom: 16px;"> <!-- Image centered -->
+                        <img src="{{ post.image.url }}" class="card-img-top"
+                             style="width: 600px; padding: 15px; display: block; margin-left: auto; margin-right: auto;"
+                             alt="Post Image">
                     </div>
-                    <p class="card-text" style="font-size:122% ">{{ post.body }}</p>
-                    <p class="card-text">Tags:
+                    <p class="card-text" style="font-size: 122%">{{ post.body|linebreaks }}</p>
+
+                    <p class="card-text" style="margin: 40px 0 10px 0;">Tags:
                         {% for tag in post.tags.all %}
                         <span class="badge badge-primary" style="font-size: 100%">{{ tag|join:","}}</span>
                         {% endfor %}
@@ -34,9 +37,11 @@ Post - details
                 </div>
             </div>
             <!--similar posts by tag-->
-            <div class="card mt-4" style="background-color: ghostwhite; margin-bottom: 32px">
+            <div class="card mt-4" style="background-color: ghostwhite; margin-bottom: 42px;
+             padding-top: 10px;">
                 <div class="card-body">
-                    <h5 class="card-title" style="margin-bottom: 18px">Similar Posts</h5>
+                    <h4 style="margin-bottom: 28px;padding-left: 5px;color: chocolate">Similar Posts  </h4>
+
                     {% for similar_post in similar_posts %}
                     <div class="media">
                         <a href="{% url 'blog:details' similar_post.slug %}"><img src="{{ similar_post.image.url }}"
@@ -55,7 +60,8 @@ Post - details
                             </p>
                         </div>
                     </div>
-                    <p>_______________________________________________________________________________________________________________________________________
+                    <p>
+                        _______________________________________________________________________________________________________________________________________
                     </p>
                     {% endfor %}
                 </div>

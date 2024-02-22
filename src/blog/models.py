@@ -34,7 +34,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['created']
 
 
 class Comment(models.Model):
