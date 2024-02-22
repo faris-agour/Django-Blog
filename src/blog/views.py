@@ -1,7 +1,11 @@
 from django.core.paginator import Paginator
+from django.core.paginator import Paginator
 from django.db.models import Count, Q
-from django.shortcuts import render, get_object_or_404
-
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from .forms import AddForm
 from .models import Post
 
 
@@ -26,3 +30,20 @@ def post_details(request, slug):
     return render(request,
                   'details.html',
                   {'post': post, "similar_posts": similar_posts})
+
+
+@login_required
+def add(request):
+    if request.method == 'POST':
+        form = AddForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user  # Set the author to the current user
+            post.save()
+            form.save_m2m()  # Save many-to-many fields
+            post_slug = post.slug  # Replace 'your-post-slug' with the actual slug of the post
+            return redirect(reverse('blog:details', kwargs={'slug': post_slug}))  # Redirect to the post details page
+    else:
+        form = AddForm()
+
+    return render(request, 'add.html', {'form': form})  # Return the form for GET requests
