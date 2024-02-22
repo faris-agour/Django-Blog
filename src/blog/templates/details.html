@@ -27,7 +27,7 @@ Post - details
                              style="width: 600px; padding: 15px; display: block; margin-left: auto; margin-right: auto;"
                              alt="Post Image">
                     </div>
-                    <p class="card-text" style="font-size: 122%">{{ post.body|linebreaks }}</p>
+                    <p class="card-text" style="font-size: 122%">{{ post.body|safe|linebreaks }}</p>
 
                     <p class="card-text" style="margin: 40px 0 10px 0;">Tags:
                         {% for tag in post.tags.all %}
