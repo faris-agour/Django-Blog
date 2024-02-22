@@ -1,8 +1,32 @@
+from django import forms
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.models import User
+from django.db import models
 
 from .models import Post, Comment
-from django.db import models
-from django import forms
+
+
+
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        model = User
+        fields = ('username', 'password', 'first_name', 'last_name', 'email')
+
+
+class CustomUserAdmin(UserAdmin):
+    form = CustomUserChangeForm
+
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),
+    )
+
+
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
 
 
 @admin.register(Post)
