@@ -8,9 +8,6 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'author', 'created', 'status']
 
 
-@admin.register(Category)
-class PostAdmin(admin.ModelAdmin):
-    list_display = ['name']
 @admin.register(Comment)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['content']

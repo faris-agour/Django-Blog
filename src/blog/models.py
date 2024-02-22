@@ -14,13 +14,6 @@ def img_upload(instance, filename):
     return f'images/{instance.id}.{ext}'
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_post')  # one author has many posts
     title = models.CharField(max_length=250)
@@ -30,7 +23,6 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status)
     image = models.ImageField(upload_to=img_upload, blank=True, null=True)
-    categories = models.ManyToManyField(Category)
     tags = TaggableManager()
 
     def __str__(self):
