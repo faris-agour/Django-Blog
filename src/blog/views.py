@@ -1,10 +1,10 @@
-from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
+
 from .forms import AddForm
 from .models import Post
 
@@ -16,8 +16,8 @@ def blog_list(request):
     paginated_posts = paginator.get_page(page_number)
     query = request.GET.get('q')
     if query:
-        paginated_posts = all_posts.filter(Q(title__icontains=query) | Q(body__icontains=query))
-
+        paginated_posts = all_posts.filter(
+            Q(title__icontains=query) | Q(body__icontains=query) | Q(tags__name__icontains=query)).distinct()
     return render(request, 'index.html', {'posts': paginated_posts})
 
 
