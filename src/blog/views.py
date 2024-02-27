@@ -18,7 +18,7 @@ def blog_list(request):
     if query:
         paginated_posts = all_posts.filter(
             Q(title__icontains=query) | Q(body__icontains=query) | Q(tags__name__icontains=query)).distinct()
-    return render(request, 'index.html', {'posts': paginated_posts})
+    return render(request, 'index.html', {'posts': paginated_posts, "query": query})
 
 
 def post_details(request, slug):

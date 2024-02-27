@@ -7,8 +7,13 @@ My Django Blog - Index
 {% block content %}
 <div style="background-color: darkgray; margin-bottom:14px">
     <div>
+        {%if query%}
+        <h1 style="text-align: center;padding-top: 47px;padding-bottom: 1px">Search results for "{{ query }}"</h1>
+        {%else%}
         <h1 style="text-align: center;padding-top: 47px;padding-bottom: 1px">Welcome to BlogIT</h1>
+        {%endif%}
         <p style="margin-bottom:70px;padding-bottom: 32px;text-align: center">This is where you can find all the latest
+
             posts and articles.</p>
     </div>
 </div>
