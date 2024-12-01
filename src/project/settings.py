@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'taggit',
     "blog",
-    "contact"
+    "contact",
+    "accounts"
 
 ]
 
