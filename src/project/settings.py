@@ -40,7 +40,6 @@ EMAIL_TLS = os.getenv('EMAIL_USE_TLS')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = [CURRENT_HOST]
 
 # Application definition
